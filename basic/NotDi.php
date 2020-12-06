@@ -5,11 +5,12 @@ namespace Di\Not;
 
 class MessageClient
 {
-    private MailService $service; // Serviceが変わるたびに修正が必要
+    private MailService $service;
 
     public function __construct()
     {
-        $this->service = new MailService(); // Serviceが変わるたびに修正が必要
+        // Serviceが変わるたびに修正が必要
+        $this->service = new MailService();
     }
 
     public function sendMessage()

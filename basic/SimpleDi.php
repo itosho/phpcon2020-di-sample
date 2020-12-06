@@ -7,6 +7,7 @@ class MessageClient
 {
     private MailService $service;
 
+    // 外部から注入しても依存していることには変わらない
     public function __construct(MailService $service)
     {
         $this->service = $service;
