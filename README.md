@@ -1,5 +1,5 @@
 # x-cakephp-di-container 
-- PHPカンファレンス2020のセッション「CakePHPで学ぶDIコンテナ」で使用するサンプルコードです。
+- [PHPカンファレンス2020](https://phpcon.php.gr.jp/2020/)のセッション[「CakePHPで学ぶDIコンテナ」](https://fortee.jp/phpcon-2020/proposal/48c5bea5-2b1d-43bd-b8dd-50c4724cf787)で使用するサンプルコードです。
 
 ## 登壇資料
 - T.B.D
