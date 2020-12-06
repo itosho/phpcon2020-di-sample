@@ -3,19 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * Messages Controller
- */
+use App\Service\MailServiceInterface;
+
 class MessagesController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function index()
+    public function index(MailServiceInterface $mail)
     {
-        echo 'hey!';
+        $mail->send();
         exit;
     }
 }
