@@ -1,23 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace Di\Container;
+namespace Di\ServiceLocator;
 
 require 'vendor/autoload.php';
 use League\Container\Container;
 
 class MessageClient
 {
-    private MessageServiceInterface $service;
+    private Container $service;
 
-    public function __construct(MessageServiceInterface $service)
+    public function __construct(Container $service)
     {
         $this->service = $service;
     }
 
     public function sendMessage()
     {
-        $this->service->send();
+        $this->service->get(MessageServiceInterface::class )->send();
     }
 }
 
@@ -45,8 +45,6 @@ class PushService implements MessageServiceInterface
 $container = new Container;
 
 $container->add(MessageServiceInterface::class, MailService::class);
-$container->add(MessageClient::class)->addArgument(MessageServiceInterface::class);
 
-/** @var MessageClient $client */
-$client = $container->get(MessageClient::class);
+$client = new MessageClient($container);
 $client->sendMessage();
