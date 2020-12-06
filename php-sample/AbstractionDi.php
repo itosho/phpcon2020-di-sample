@@ -1,13 +1,17 @@
 <?php
+// DIを使ったコード（抽象クラスに依存させる）
 declare(strict_types=1);
 
-namespace Di\Concretion;
+namespace Di\Abstraction;
 
-class MessageClient
+use Di\Service\AwsSesService;
+use Di\Service\MailServiceInterface;
+
+class MailClient
 {
-    private MessageServiceInterface $service;
+    private MailServiceInterface $service;
 
-    public function __construct(MessageServiceInterface $service)
+    public function __construct(MailServiceInterface $service)
     {
         $this->service = $service;
     }
@@ -18,27 +22,6 @@ class MessageClient
     }
 }
 
-interface MessageServiceInterface
-{
-    public function send();
-}
-
-class MailService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by email.');
-    }
-}
-
-class PushService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by push.');
-    }
-}
-
-// 抽象に依存させることでここを変更するだけになる
-$client = new MessageClient(new PushService());
+// 抽象に依存させることで柔軟にクラスを差し替えることが出来る
+$client = new MailClient(new AwsSesService());
 $client->sendMessage();

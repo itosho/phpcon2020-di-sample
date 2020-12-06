@@ -1,12 +1,16 @@
 <?php
+// サービスロケーターパターンのコード（WIP）
 declare(strict_types=1);
 
 namespace Di\ServiceLocator;
 
 require 'vendor/autoload.php';
+
+use Di\Service\MailServiceInterface;
+use Di\Service\SendGridService;
 use League\Container\Container;
 
-class MessageClient
+class MailClient
 {
     private Container $service;
 
@@ -17,34 +21,13 @@ class MessageClient
 
     public function sendMessage()
     {
-        $this->service->get(MessageServiceInterface::class )->send();
-    }
-}
-
-interface MessageServiceInterface
-{
-    public function send();
-}
-
-class MailService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by email.');
-    }
-}
-
-class PushService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by push.');
+        $this->service->get(MailServiceInterface::class)->send();
     }
 }
 
 $container = new Container;
 
-$container->add(MessageServiceInterface::class, MailService::class);
+$container->add(MailServiceInterface::class, SendGridService::class);
 
-$client = new MessageClient($container);
+$client = new MailClient($container);
 $client->sendMessage();

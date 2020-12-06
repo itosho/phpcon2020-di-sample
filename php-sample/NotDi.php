@@ -1,16 +1,18 @@
 <?php
+// DIではないコード
 declare(strict_types=1);
 
 namespace Di\Not;
 
-class MessageClient
+use Di\Service\AwsSesService;
+
+class MailClient
 {
-    private MailService $service;
+    private AwsSesService $service;
 
     public function __construct()
     {
-        // Serviceが変わるたびに修正が必要
-        $this->service = new MailService();
+        $this->service = new AwsSesService(); // Serviceが変わるたびに修正が必要
     }
 
     public function sendMessage()
@@ -19,21 +21,5 @@ class MessageClient
     }
 }
 
-class MailService
-{
-    public function send()
-    {
-        print_r('send message by email.');
-    }
-}
-
-class PushService
-{
-    public function send()
-    {
-        print_r('send message by push.');
-    }
-}
-
-$client = new MessageClient();
+$client = new MailClient();
 $client->sendMessage();

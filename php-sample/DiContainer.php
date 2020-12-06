@@ -1,12 +1,16 @@
 <?php
+// DIコンテナを利用したコード
 declare(strict_types=1);
 
 namespace Di\Container;
 
 require 'vendor/autoload.php';
+
+use Di\Service\SendGridService;
+use Di\ServiceLocator\MessageServiceInterface;
 use League\Container\Container;
 
-class MessageClient
+class MailClient
 {
     private MessageServiceInterface $service;
 
@@ -21,32 +25,11 @@ class MessageClient
     }
 }
 
-interface MessageServiceInterface
-{
-    public function send();
-}
-
-class MailService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by email.');
-    }
-}
-
-class PushService implements MessageServiceInterface
-{
-    public function send()
-    {
-        print_r('send message by push.');
-    }
-}
-
 $container = new Container;
 
-$container->add(MessageServiceInterface::class, MailService::class);
-$container->add(MessageClient::class)->addArgument(MessageServiceInterface::class);
+$container->add(MessageServiceInterface::class, SendGridService::class);
+$container->add(MailClient::class)->addArgument(MessageServiceInterface::class);
 
-/** @var MessageClient $client */
-$client = $container->get(MessageClient::class);
+/** @var MailClient $client */
+$client = $container->get(MailClient::class);
 $client->sendMessage();

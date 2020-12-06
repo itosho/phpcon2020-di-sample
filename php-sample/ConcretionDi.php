@@ -1,14 +1,17 @@
 <?php
+// DIを使ったコード（具体クラスに依存させる）
 declare(strict_types=1);
 
-namespace Di\Con;
+namespace Di\Concretion;
 
-class MessageClient
+use Di\Service\AwsSesService;
+
+class MailClient
 {
-    private MailService $service;
+    private AwsSesService $service;
 
-    // 外部から注入しても依存していることには変わらない
-    public function __construct(MailService $service)
+    // 外部から注入しても具体のクラスに依存していることには変わりがない
+    public function __construct(AwsSesService $service)
     {
         $this->service = $service;
     }
@@ -19,13 +22,5 @@ class MessageClient
     }
 }
 
-class MailService
-{
-    public function send()
-    {
-        print_r('send message by email.');
-    }
-}
-
-$client = new MessageClient(new MailService());
+$client = new MailClient(new AwsSesService());
 $client->sendMessage();
