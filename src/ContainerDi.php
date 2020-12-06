@@ -49,5 +49,6 @@ $container = new Container;
 $container->add(MessageServiceInterface::class, MailService::class);
 $container->add(MessageClient::class)->addArgument(MessageServiceInterface::class);
 
+/** @var MessageClient $client */
 $client = $container->get(MessageClient::class);
 $client->sendMessage();
