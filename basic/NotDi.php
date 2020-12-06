@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace Di\Not;
+
 class MessageClient
 {
     private MailService $service; // Serviceが変わるたびに修正が必要
