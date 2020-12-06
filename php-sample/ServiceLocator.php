@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Di\ServiceLocator;
 
 require 'vendor/autoload.php';
+require 'Service.php';
 
 use Di\Service\MailServiceInterface;
 use Di\Service\SendGridService;

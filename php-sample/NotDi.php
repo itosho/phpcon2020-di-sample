@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Di\Not;
 
+require 'Service.php';
+
 use Di\Service\AwsSesService;
 
 class MailClient

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Di\Abstraction;
 
+require 'Service.php';
+
 use Di\Service\AwsSesService;
 use Di\Service\MailServiceInterface;
 
