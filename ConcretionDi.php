@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Di\Simple;
+namespace Di\Con;
 
 class MessageClient
 {
