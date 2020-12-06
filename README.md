@@ -6,7 +6,7 @@
 
 ## インストール方法
 
-```
+```sh
 $ git clone git@github.com:itosho/x-cakephp-di-container.git
 ```
 
@@ -15,7 +15,7 @@ $ git clone git@github.com:itosho/x-cakephp-di-container.git
 
 ### PHPのサンプルコード
 
-```
+```sh
 $ cd php-sample
 $ composer install
 # 適当なPHPファイルを実行してお試しください
@@ -24,7 +24,7 @@ $ composer install
 
 ### CakePHPのサンプルコード
 
-```
+```sh
 $ cd php-sample
 $ composer install
 $ bin/cake server
