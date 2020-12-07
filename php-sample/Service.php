@@ -12,7 +12,7 @@ class AwsSesService implements MailServiceInterface
 {
     public function send()
     {
-        echo 'send message by aws ses.';
+        echo 'send message by AWS SES.';
     }
 }
 
@@ -20,6 +20,6 @@ class SendGridService implements MailServiceInterface
 {
     public function send()
     {
-        print_r('send message by send grid.');
+        echo 'send message by SendGrid.';
     }
 }
