@@ -25,7 +25,7 @@ $ composer install
 ### CakePHPのサンプルコード
 
 ```sh
-$ cd php-sample
+$ cd cakephp-sample
 $ composer install
 $ bin/cake server
 # 動作確認用URL: http://localhost:8765/messages
